@@ -2,6 +2,9 @@ use log::error;
 use std::error::Error;
 use std::process::exit;
 
+mod counter;
+mod handler;
+
 #[tokio::main]
 async fn main() {
     pretty_env_logger::init();
@@ -15,6 +18,6 @@ async fn main() {
     }
 }
 
-async fn do_main() -> Result<(), dyn Error> {
+async fn do_main() -> Result<(), Box<dyn Error>> {
     Ok(())
 }
