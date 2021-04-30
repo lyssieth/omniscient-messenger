@@ -7,18 +7,25 @@ use tokio::io::{AsyncReadExt, AsyncWriteExt};
 pub struct Config {
     #[serde(default = "invalid_token")]
     pub token: String,
+    #[serde(default = "database_path")]
+    pub database_path: PathBuf,
 }
 
 impl Default for Config {
     fn default() -> Self {
         Self {
             token: invalid_token(),
+            database_path: database_path(),
         }
     }
 }
 
 fn invalid_token() -> String {
     "INVALID_TOKEN".to_string()
+}
+
+fn database_path() -> PathBuf {
+    "data.db".into()
 }
 
 impl Config {
